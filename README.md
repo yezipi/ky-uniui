@@ -13,11 +13,11 @@ pages.json设置
 
 ```bash
 "easycom": {
-		"autoscan": true,
-		"custom": {
-			"^ky-(.*)": "@kaiyinchem/ky-uniui/components/ky-$1.vue"
-		}
-	},
+	"autoscan": true,
+	"custom": {
+		"^ky-(.*)": "@kaiyinchem/ky-uniui/components/ky-$1.vue"
+	}
+},
 ```
 
 App.vue引入css
