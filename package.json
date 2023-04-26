@@ -1,15 +1,28 @@
 {
-  "name": "@kingchem/ky-uniui",
-  "author": {
-    "name": "kingchem"
-  },
+  "name": "@kaiyinchem/ky-uniui",
+  "author": "kaiyin team",
+	"private": false,
+  "files": [
+    "components",
+    "style"
+  ],
   "description": "an uniapp ui",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kingchem/ky-uniui"
+    "url": "git+https://github.com/yezipi/ky-uniui.git"
   },
+	"publishConfig": {
+	  "access": "public"
+	},
   "keywords": [
     "uniapp"
-  ]
+  ],
+  "bugs": {
+    "url": "https://github.com/yezipi/ky-uniui/issues"
+  },
+  "homepage": "https://github.com/yezipi/ky-uniui#readme",
+  "scripts": {
+  },
+  "license": "ISC"
 }
