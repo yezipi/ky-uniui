@@ -167,6 +167,11 @@
 						display: flex;
 						align-items: center;
 						justify-content: center;
+						border-right: 1px solid var(--color-primary);
+						box-sizing: border-box;
+						&:last-child {
+							border-right: 0;
+						}
 						&.active {
 							background: var(--color-primary);
 							color: #ffffff;
