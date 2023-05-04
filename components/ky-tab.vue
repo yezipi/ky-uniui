@@ -6,23 +6,24 @@
       sticky: position === 'sticky',
       iphonex: $safeBottom > 0 && position === 'fixed',
       icon: hasIcon,
-      scroll: scrollX
+      scroll: scrollX,
+			card: type === 'card'
     }"
-    class="tab-scroll"
+    class="ky-tab-wrap"
   >
-		<view id="tab-parent" class="tab-components">
-      <view class="tab-box">
+		<view id="ky-tab-parent" class="ky-tab-components">
+      <view class="ky-tab-box">
       	<view
       		v-for="(tab, i) in menu"
       		:style="{ color: activeColor && i === tabIndex ? activeColor : color }"
       		:key="i"
       		:class="{ active: i === tabIndex, icon: tab.icon }"
-      		:id="'tab_'+i"
-      		class="tab-item"
+      		:id="'ky_tab_'+i"
+      		class="ky-tab-item"
       		@click="onTabClick(tab, i)"
         >
-          <text v-if="tab.icon" class="tab-icon iconfont">{{ tab.icon }}</text>
-          <text class="tab-text">{{ tab[label] }}</text>
+          <text v-if="tab.icon" class="ky-tab-icon iconfont">{{ tab.icon }}</text>
+          <text class="ky-tab-text">{{ tab[label] }}</text>
         </view>
       </view>
       <!-- <view
@@ -78,6 +79,11 @@
         type: String,
         default: 'id',
       },
+			/** line: 边框样式，card，选项卡样式 */
+			type: {
+				type: String,
+				default: 'line',
+			}
 		},
 		data() {
 			return {
@@ -115,7 +121,7 @@
           return
         }
 				const query = uni.createSelectorQuery().in(this)
-				const parent = query.select('#tab-parent')
+				const parent = query.select('#ky-tab-parent')
 				// vue3版本在真机上不能同时获取两个元素
 				parent.boundingClientRect(data => {
 					// console.log(data)
@@ -134,19 +140,41 @@
 </script>
 
 <style scoped lang="scss">
-  .tab-scroll {
+  .ky-tab-wrap {
     background: var(--bg-white);
     width: auto;
     &.scroll {
       padding: 0 24rpx;
-      .tab-components {
+      .ky-tab-components {
         white-space: nowrap;
-        .tab-box {
+        .ky-tab-box {
           justify-content: flex-start;
 					position: relative;
         }
       }
     }
+		&.card {
+			.ky-tab-components {
+				.ky-tab-box {
+					justify-content: space-between;
+					border: 1px solid var(--color-primary);
+					box-sizing: border-box;
+					border-radius: 6rpx;
+					.ky-tab-item {
+						flex: 1;
+						margin: 0;
+						border: 0;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						&.active {
+							background: var(--color-primary);
+							color: #ffffff;
+						}
+					}
+				}
+			}
+		}
     &.icon {
       padding: 12rpx 24rpx;
     }
@@ -165,50 +193,50 @@
       z-index: 999;
       top: 0;
     }
-  }
-	.tab-components {
-		position: relative;
-		z-index: 1;
-		.tab-box {
-			display: flex;
-			justify-content: space-around;
-			.tab-item {
-				margin: 0 12rpx;
-				padding: 12rpx 0;
-				transition: all 0.3s;
-				color: var(--color-gray);
-				border-bottom: 2px solid rgba(255,255,255,0);
-				box-sizing: border-box;
-				&.active {
-					font-weight: bold;
-					color: var(--color-primary);
-					border-color: var(--color-primary);
+		.ky-tab-components {
+			position: relative;
+			z-index: 1;
+			.ky-tab-box {
+				display: flex;
+				justify-content: space-around;
+				.ky-tab-item {
+					margin: 0 12rpx;
+					padding: 12rpx 0;
+					transition: all 0.3s;
+					color: var(--color-gray);
+					border-bottom: 2px solid rgba(255,255,255,0);
+					box-sizing: border-box;
+					&.active {
+						font-weight: bold;
+						color: var(--color-primary);
+						border-color: var(--color-primary);
+					}
+		      &.icon {
+		        font-weight: normal;
+		        .tab-text {
+		          font-size: 22rpx;
+		        }
+		      }
+		      .tab-icon, .tab-text {
+		        display: block;
+		        text-align: center;
+		        color: inherit;
+		      }
+		      .tab-icon {
+		        font-size: 48rpx;
+		      }
 				}
-        &.icon {
-          font-weight: normal;
-          .tab-text {
-            font-size: 22rpx;
-          }
-        }
-        .tab-icon, .tab-text {
-          display: block;
-          text-align: center;
-          color: inherit;
-        }
-        .tab-icon {
-          font-size: 48rpx;
-        }
+			}
+			.ky-tab-slider {
+				position: absolute;
+				background-color: var(--color-primary);
+				height: 6rpx;
+				border-radius: 12rpx;
+				width: 50rpx;
+				left: 15%;
+				bottom: 0;
+		    transition: all 0.5s;
 			}
 		}
-		.tab-slider {
-			position: absolute;
-			background-color: var(--color-primary);
-			height: 6rpx;
-			border-radius: 12rpx;
-			width: 50rpx;
-			left: 15%;
-			bottom: 0;
-      transition: all 0.5s;
-		}
-	}
+  }
 </style>
