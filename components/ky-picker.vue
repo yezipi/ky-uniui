@@ -14,7 +14,7 @@
       	<text v-else class="gray-color">{{ placeholder }}</text>
       </view>
       <view v-else class="picker">
-      	<text v-if="checked !== '' && checked.data[0]">{{ checked.data[0].name }} / {{ checked.data[1].name }}</text>
+      	<text v-if="checked !== '' && checked.data[0]">{{ checked.data[0].name }} {{ checked.data[1].name ? `/${checked.data[1].name}` : '' }}</text>
       	<text v-else class="gray-color">{{ placeholder }}</text>
       </view>
     </view>
@@ -129,7 +129,9 @@
                   name: j.name,
                 })
               })
-            }
+            } else {
+							e.child = []
+						}
             return { id: e.id, name: e.name, index: i }
           })
           this.names = [firstColumn, secondColumn]
@@ -201,7 +203,6 @@
         }
         if (!noEmit) {
           this.$emit('update:value', this.checked)
-          this.$emit('input', val)
         }
       }
 		}
