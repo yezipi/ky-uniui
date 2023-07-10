@@ -357,13 +357,13 @@
 				justify-content: flex-start;
 			}
 		}
-		&.top {
+		&.top .opt-item-main {
 			align-items: flex-start;
 		}
-		&.end {
+		&.end .opt-item-main {
 			align-items: flex-end;
 		}
-		&.left {
+		&.left .opt-item-main {
 			justify-content: flex-start;
       .opt-txt {
         width: 140rpx;

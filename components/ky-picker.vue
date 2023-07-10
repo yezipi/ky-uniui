@@ -154,7 +154,7 @@
 
       // 根据id进行反选索引, 延迟是因为等待value变化
       setMultiIndex(v, firstColumn, secondColumn) {
-        if (v.length) {
+        if (v && v.length) {
           v.forEach(i => {
             firstColumn.forEach((e) => {
               if (i === e.id) {
