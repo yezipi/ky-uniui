@@ -132,7 +132,7 @@
             } else {
 							e.child = []
 						}
-            return { id: e.id, name: e.name, index: i }
+            return { ...e, id: e.id, name: e.name, index: i }
           })
           this.names = [firstColumn, secondColumn]
           setTimeout(() => {
