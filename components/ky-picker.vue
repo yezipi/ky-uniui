@@ -24,12 +24,12 @@
 
 <script>
 	export default {
-		emits: ['update:value', 'change'],
+		emits: ['update:value', 'update:label', 'change'],
 		props: {
-			/**
-			 * 回显对象
-			 */
 			value: {
+				type: [Object, String, Number, Array],
+			},
+			label: {
 				type: [Object, String, Number, Array],
 			},
 			/**
@@ -97,10 +97,14 @@
 				this.index = index
 				currVal.index = index
 				this.$emit('update:value', this.checked)
+				this.$emit('update:label', this.names[index])
 				this.$emit('change', currVal)
 			},
 			mapVal(v) {
 				if (typeof v === 'undefined') {
+					this.index = 0
+					this.multiIndex = [0, 0]
+					this.checked = ''
 					return
 				}
         this.$nextTick(function() {
@@ -115,9 +119,6 @@
 			},
 			mapList(v) {
 				if (typeof v === 'undefined') {
-					this.index = 0
-					this.multiIndex = [0, 0]
-					this.checked = ''
 					return
 				}
         if (this.mode === 'multiSelector') {
@@ -200,12 +201,19 @@
 
       // 多列完成的时候触发
       onMultichange(val, noEmit) {
+				const data1 = this.names[0][val[0]]
+				const data2 = this.names[1][val[1]]
+				const emitValue = [data1[this.valueName], data2[this.valueName]]
+				const emitName = [data1[this.keyName], data2[this.keyName]]
         this.checked = {
           index: val,
-          data: [this.names[0][val[0]], this.names[1][val[1]]]
+          data: [data1, data2]
         }
+				console.log(emitValue, emitName)
         if (!noEmit) {
-          this.$emit('update:value', this.checked)
+          this.$emit('update:value', emitValue)
+					this.$emit('update:label', emitName)
+					this.$emit('change', this.checked)
         }
       }
 		}
