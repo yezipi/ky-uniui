@@ -115,6 +115,9 @@
 			},
 			mapList(v) {
 				if (typeof v === 'undefined') {
+					this.index = 0
+					this.multiIndex = [0, 0]
+					this.checked = ''
 					return
 				}
         if (this.mode === 'multiSelector') {
