@@ -142,6 +142,7 @@
 			    if (res.confirm) {
 			      this.historyList = []
 			      this.$db.set(this.keyStr, [])
+						this.hide()
 			    }
 			  })
 			},
