@@ -43,7 +43,7 @@
 
 <script>
 	export default {
-		emits: ['select', 'search'],
+		emits: ['select', 'search', 'update:keyword', 'update:visible'],
 		props: {
 			keyword: {
 				type: String,
@@ -96,9 +96,11 @@
 		methods: {
 			show() {
 				this.state = true
+				this.$emit('update:visible', true)
 			},
 			hide() {
 				this.state = false
+				this.$emit('update:visible', false)
 			},
 			save() {
 				const hasSame = this.historyList.some(e => e === this.str)
@@ -106,12 +108,12 @@
 				  this.historyList.push(this.str)
 				  this.$db.set(this.keyStr, this.historyList)
 				}
-			  this.state = false
+			  this.hide()
 			  uni.hideKeyboard()
 			},
 			handleClear() {
 			  this.str = undefined
-				this.state = false
+				this.hide()
 			},
 			handleSearch() {
 				this.$emit('search', this.str)
@@ -121,7 +123,7 @@
 			},
 			handleFocus() {
 				if (!this.str) {
-					this.state = true
+					this.show()
 				}
 			},
 			selectKeyword(str) {
@@ -131,6 +133,9 @@
 			clearSignle(index) {
 			  this.historyList.splice(index, 1)
 			  this.$db.set(this.keyStr, this.historyList)
+				if (!this.historyList.length) {
+					this.hide()
+				}
 			},
 			clearHistory() {
 			  this.$confirm({ content: '确定清除全部历史吗？' }, (res) => {
