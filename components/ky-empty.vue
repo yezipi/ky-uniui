@@ -32,7 +32,7 @@
   .ky-empty-wrap {
     display: flex;
     justify-content: center;
-    padding: 48rpx;
+    padding: 24rpx;
     .ky-empty-box {
       display: flex;
       flex-direction: column;
@@ -47,7 +47,7 @@
       display: inline-block;
       margin-bottom: 24rpx;
       font-size: 28rpx;
-      color: #999999;
+      color: var(--color-gray)
     }
   }
 </style>
