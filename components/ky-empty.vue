@@ -45,7 +45,6 @@
     }
     .ky-empty-msg {
       display: inline-block;
-      margin-bottom: 24rpx;
       font-size: 28rpx;
       color: var(--color-gray)
     }
