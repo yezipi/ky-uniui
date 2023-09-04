@@ -121,7 +121,7 @@
 
 <script>
 	export default {
-		emits:['click', 'focus', 'blur', 'update:value'],
+		emits:['click', 'focus', 'blur', 'update:value', 'change'],
 		props: {
 			// 左边显示的文本
 			label: {
