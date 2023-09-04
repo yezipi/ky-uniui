@@ -248,6 +248,7 @@
 				const val = detail.value.replace(/-/g, '/')
 				this.content = val
 				this.$emit('update:value', val)
+				this.$emit('change', val)
 			},
 		}
 	}
