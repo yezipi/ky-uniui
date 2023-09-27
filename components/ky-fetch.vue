@@ -184,11 +184,6 @@
 					delete params.size
 				}
 				
-				if (this.noLoadmore) {
-					delete params.page
-					delete params.size
-				}
-				
 				try {
 					const apiUrl = this.api.split('.')
 					const res = await this.$api[apiUrl[0]][apiUrl[1]](params)
