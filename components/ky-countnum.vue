@@ -30,7 +30,7 @@
 
 <script>
   export default {
-		emits: ['update:value'],
+		emits: ['update:value', 'click'],
     props: {
       value: {
         type: [Number, String],
