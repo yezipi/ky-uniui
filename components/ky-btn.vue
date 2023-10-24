@@ -427,7 +427,7 @@
 	
 	@media (prefers-color-scheme: dark) {
 		.btn-main {
-			color: #bbbbbb;
+			color: #f5f5f5;
 			&.primary {
 				&.plain {
 					background: #233838;
