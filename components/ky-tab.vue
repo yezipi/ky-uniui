@@ -153,6 +153,9 @@
         }
       }
     }
+		.ky-tab-text {
+			white-space: nowrap;
+		}
 		&.card {
 			.ky-tab-components {
 				.ky-tab-box {
