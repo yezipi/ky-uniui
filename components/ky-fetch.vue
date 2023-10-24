@@ -52,7 +52,7 @@
 			api: {
 				type: String,
 				default: '',
-				required: true,
+				required: false,
 			},
 			// status 1：请求成功, -1：暂无数据, -2：请求失败， -3: 无网络
 			status: {
@@ -121,7 +121,7 @@
 			},
 		},
 		mounted() {
-			if (!this.manual) {
+			if (!this.manual || !this.api) {
 				this.init()
 			}
 			this.msg = this.errMsg
@@ -167,6 +167,9 @@
 				this.filter = obj
 			},
 			async getList(noReload) {
+				if (!this.api) {
+					return
+				}
 				this.loading = true
 				this.setFilters(this.condition)
 				let rows = []
