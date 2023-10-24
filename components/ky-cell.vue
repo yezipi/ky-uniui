@@ -276,8 +276,6 @@
 		}
 
     &.textarea {
-      display: block;
-      justify-content: initial;
       &.left {
         .opt-item-main {
 					align-items: flex-start;
@@ -285,6 +283,7 @@
         .opt-textarea {
           margin-top: 0;
           flex: 1;
+					text-align: left;
         }
         .opt-right {
           display: flex;
@@ -296,6 +295,7 @@
         display: flex;
         background-color: var(--bg-gray);
         border-radius: 12rpx;
+				flex: 1;
         .opt-uni-textarea {
           flex: 1;
           height: 120rpx;
@@ -304,14 +304,12 @@
         }
       }
       .opt-left {
-        display: block;
-        flex: none;
+        flex-shrink: 0;
       }
-      .opt-right {
-        display: block;
-        flex: none;
-        justify-content: initial;
-      }
+			.opt-right {
+			  display: flex;
+			  flex: 1;
+			}
     }
 
 		&:active {
