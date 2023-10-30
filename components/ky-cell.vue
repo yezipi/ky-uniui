@@ -333,7 +333,7 @@
 		}
 		&.small {
 			padding: 0 20rpx;
-			.opt-txt, .opt-val {
+			.opt-txt, .opt-val, .opt-suffix {
 				font-size: 24rpx;
 			}
 			.opt-icon, .opt-img {
