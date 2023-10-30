@@ -347,7 +347,7 @@
 				min-height: 55rpx;
 				line-height: 55rpx;
 			}
-			&.left .opt-txt {
+			&.left .opt-item-main .opt-txt {
 				width: 120rpx;
 			}
 		}
