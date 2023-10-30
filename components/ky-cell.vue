@@ -332,13 +332,20 @@
 			}
 		}
 		&.small {
-			padding: 15rpx 24rpx;
+			padding: 0 20rpx;
 			.opt-txt, .opt-val {
 				font-size: 24rpx;
 			}
 			.opt-icon, .opt-img {
 				font-size: 30rpx;
 				width: 30rpx;
+			}
+			.opt-right {
+				min-height: 50rpx;
+			}
+			.opt-input {
+				min-height: 55rpx;
+				line-height: 55rpx;
 			}
 		}
 		&.gray {

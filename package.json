@@ -1,20 +1,20 @@
 {
   "name": "@kaiyinchem/ky-uniui",
   "author": "kaiyin team",
-	"private": false,
+  "private": false,
   "files": [
     "components",
     "style"
   ],
   "description": "an uniapp ui",
-  "version": "1.0.25",
+  "version": "1.0.26",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/yezipi/ky-uniui.git"
   },
-	"publishConfig": {
-	  "access": "public"
-	},
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "uniapp"
   ],
@@ -22,7 +22,9 @@
     "url": "https://github.com/yezipi/ky-uniui/issues"
   },
   "homepage": "https://github.com/yezipi/ky-uniui#readme",
-  "scripts": {
-  },
-  "license": "ISC"
+  "scripts": {},
+  "license": "ISC",
+  "dependencies": {
+    "@dcloudio/uni-ui": "^1.4.28"
+  }
 }

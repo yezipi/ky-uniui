@@ -121,7 +121,7 @@
 			},
 		},
 		mounted() {
-			if (!this.manual || !this.api) {
+			if (!this.manual && this.api) {
 				this.init()
 			}
 			this.msg = this.errMsg
