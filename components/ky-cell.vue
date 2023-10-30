@@ -347,6 +347,9 @@
 				min-height: 55rpx;
 				line-height: 55rpx;
 			}
+			&.left .opt-txt {
+				width: 120rpx;
+			}
 		}
 		&.gray {
 			.opt-txt {
