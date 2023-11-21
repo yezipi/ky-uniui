@@ -83,8 +83,7 @@
 							  @input="onInput"
 							  @focus="$emit('focus')"
 							  @blur="$emit('blur')"
-							>
-							</textarea>
+							></textarea>
 						</view>
 					</view>
 					
