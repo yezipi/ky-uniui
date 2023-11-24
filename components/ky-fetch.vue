@@ -15,7 +15,7 @@
 			<slot name="loading"></slot>
 		</view>
 		
-		<view v-if="loadState !== 0 && loadState !== 1" class="ky-fetch-error">
+		<view v-if="loadState !== 0 && loadState !== 1" :class="{ isRelative }" class="ky-fetch-error">
 			
 			<view v-if="!$slots.nodata || !$slots.error" class="ky-fetch-error-tip" @click="reload">
 				<template v-if="!noIcon">
@@ -318,6 +318,9 @@
 		justify-content: center;
 		align-items: center;
 		z-index: 0;
+		&.ky-fetch-error {
+			position: isRelative;
+		}
 		.ky-fetch-error-tip {
 			display: flex;
 			align-items: center;

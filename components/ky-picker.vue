@@ -3,6 +3,7 @@
     :value="mode === 'selector' ? index : multiIndex"
     :range="names"
     :mode="mode"
+		:fields="fields"
 		:disabled="disabled"
     :range-key="mode === 'selector' ? '' : 'name'"
     @change="bindPickerChange"
@@ -55,6 +56,10 @@
         type: String,
         default: 'selector',
       },
+			fields: {
+				type: String,
+				default: 'day', // 有效值 year、month、day
+			},
 			disabled: {
 				type: Boolean,
 				default: false,
