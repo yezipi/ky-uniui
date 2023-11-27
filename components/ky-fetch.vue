@@ -318,7 +318,7 @@
 		justify-content: center;
 		align-items: center;
 		z-index: 0;
-		&.ky-fetch-error {
+		&.isRelative {
 			position: relative;
 			margin-bottom: 24rpx;
 		}
