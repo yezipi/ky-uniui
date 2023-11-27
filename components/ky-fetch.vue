@@ -319,7 +319,8 @@
 		align-items: center;
 		z-index: 0;
 		&.ky-fetch-error {
-			position: isRelative;
+			position: relative;
+			margin-bottom: 24rpx;
 		}
 		.ky-fetch-error-tip {
 			display: flex;
