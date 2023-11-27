@@ -108,10 +108,12 @@
           this.emit()
         } else {
           if (count < min) {
+						this.count = min
             this.$toast('超出最小数值')
           }
 
           if (count > max) {
+						this.count = max
             this.$toast('超出最大数值')
           }
           this.emit()
