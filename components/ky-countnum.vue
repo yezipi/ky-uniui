@@ -101,7 +101,7 @@
 
         // 如果输入的不是倍数，自动调整成最小的数值
         if (this.multiple) {
-          if (count % min !== 0) {
+          if ((Number((count % min).toFixed(3)) % min) !== 0) {
             this.count = min
             this.$toast('请输入规格的倍数')
           }
@@ -128,7 +128,7 @@
           return
         }
 
-        if (this.multiple && this.count % min !== 0) {
+        if (this.multiple && (Number((this.count % min).toFixed(3)) % min) !== 0) {
           this.count = min
           this.$toast('只能是规格的倍数')
           this.emit()
