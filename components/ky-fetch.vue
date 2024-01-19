@@ -17,7 +17,7 @@
 		
 		<view v-if="loadState !== 0 && loadState !== 1" :class="{ isRelative }" class="ky-fetch-error">
 			
-			<view v-if="!$slots.nodata || !$slots.error" class="ky-fetch-error-tip" @click="reload">
+			<view v-if="!$slots.nodata && !$slots.error" class="ky-fetch-error-tip" @click="reload">
 				<template v-if="!noIcon">
 					<image v-if="loadState === -1" class="ky-fetch-err-img" src="@/static/img/nodata.png"></image>
 					<image v-else-if="loadState === -2" class="ky-fetch-err-img" src="@/static/img/request_error.png"></image>
@@ -35,7 +35,7 @@
 			</view>
 			
 		</view>
-		
+				
 	</view>
 </template>
 
