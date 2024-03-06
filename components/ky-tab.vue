@@ -8,6 +8,7 @@
       icon: hasIcon,
       scroll: scrollX,
 			card: type === 'card'
+			'white-bg': !noBg
     }"
     class="ky-tab-wrap"
   >
@@ -83,7 +84,11 @@
 			type: {
 				type: String,
 				default: 'line',
-			}
+			},
+			noBg: {
+			  type: Boolean,
+			  default: false,
+			},
 		},
 		data() {
 			return {
@@ -141,8 +146,10 @@
 
 <style scoped lang="scss">
   .ky-tab-wrap {
-    background: var(--bg-white);
     width: auto;
+		&.white-bg {
+			background: var(--bg-white);
+		}
     &.scroll {
       padding: 0 24rpx;
       .ky-tab-components {
