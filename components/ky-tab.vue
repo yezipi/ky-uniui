@@ -7,7 +7,7 @@
       iphonex: $safeBottom > 0 && position === 'fixed',
       icon: hasIcon,
       scroll: scrollX,
-			card: type === 'card'
+			card: type === 'card',
 			'white-bg': !noBg
     }"
     class="ky-tab-wrap"
