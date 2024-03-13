@@ -35,7 +35,6 @@
 
 <style scoped lang="scss">
 	.ky-loading-box {
-		height: 25rpx;
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -49,45 +48,20 @@
 
 		&.isRelative {
 			position: relative;
-			min-height: 100rpx;
+			margin: 24rpx;
 		}
 	}
 
 	.ky-loading1 {
-		width: 150rpx;
-		height: 150rpx;
-	}
-
-	.ky-loading3 {
-		position: relative;
-		width: 75px;
-		height: 75px;
-		overflow: visible;
-
-		.ky-loading-shape {
-			position: absolute;
-			width: 20px;
-			height: 20px;
-			border-radius: 0;
-			background-color: var(--color-primary);
-			display: block;
-			background-color: var(--color-primary);
-			border-radius: 3px;
-
-			&:nth-child(1) {
-				left: 0px;
-				top: 0;
-				animation: amove 2s infinite linear;
-			}
-		}
-
+		width: 180rpx;
+		height: 180rpx;
 	}
 
 	.ky-loading2 {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-
+		height: 25rpx;
 		.ky-loading-shape {
 			width: 25rpx;
 			height: 25rpx;
@@ -107,6 +81,31 @@
 		.shape3 {
 			animation: pulse .4s ease .4s infinite alternate;
 		}
+	}
+	
+	.ky-loading3 {
+		position: relative;
+		width: 75px;
+		height: 75px;
+		overflow: visible;
+	
+		.ky-loading-shape {
+			position: absolute;
+			width: 20px;
+			height: 20px;
+			border-radius: 0;
+			background-color: var(--color-primary);
+			display: block;
+			background-color: var(--color-primary);
+			border-radius: 3px;
+	
+			&:nth-child(1) {
+				left: 0px;
+				top: 0;
+				animation: amove 2s infinite linear;
+			}
+		}
+	
 	}
 
 	@keyframes pulse {
