@@ -59,6 +59,10 @@
 		  </view>
 		</ky-pop>
 		
+		<view style="position: relative;padding: 30rpx 0;">
+			<ky-loading :type="1"></ky-loading>
+		</view>
+		
 		
 	</view>
 </template>
