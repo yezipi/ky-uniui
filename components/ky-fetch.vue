@@ -11,7 +11,7 @@
 		</view>
 		
 		<view v-if="loadState === 0 || !loadState" :class="{ isRelative }" class="ky-fetch-loading">
-			<ky-loading v-if="!$slots.loading" :type="loadingType"></ky-loading>
+			<ky-loading v-if="!$slots.loading" :type="loadingType" :isRelative="isRelative"></ky-loading>
 			<slot name="loading"></slot>
 		</view>
 		
