@@ -89,6 +89,10 @@
 			  type: Boolean,
 			  default: false,
 			},
+			disabled: {
+				type: Boolean,
+				default: false,
+			}
 		},
 		data() {
 			return {
@@ -119,6 +123,9 @@
 		},
 		methods: {
 			onTabClick(item, index) {
+				if (this.disabled) {
+					return
+				}
         if (this.hasIcon) {
           this.tabIndex = index
           this.$emit('change', index)
