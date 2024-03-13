@@ -11,7 +11,7 @@
 		</view>
 		
 		<view v-if="loadState === 0 || !loadState" :class="{ isRelative }" class="ky-fetch-loading">
-			<ky-loading v-if="!$slots.loading"></ky-loading>
+			<ky-loading v-if="!$slots.loading" :type="loadingType"></ky-loading>
 			<slot name="loading"></slot>
 		</view>
 		
@@ -96,6 +96,13 @@
 			noIcon: {
 			  type: Boolean,
 			  default: false
+			},
+			/**
+			 * 动画类型，1三个点，2gif，3方块
+			 */
+			loadingType: {
+				type: Number,
+				default: 1,
 			}
 		},
 		data() {
