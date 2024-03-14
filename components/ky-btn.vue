@@ -191,7 +191,7 @@
 		justify-content: center;
 		padding: 0;
 		margin: 0;
-		min-width: 150rpx;
+		min-width: 120rpx;
 		&:after {
 			display: none
 		}
