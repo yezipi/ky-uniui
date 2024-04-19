@@ -126,6 +126,9 @@
 			status(v) {
 				this.loadState = v
 			},
+			errMsg(v) {
+				this.msg = v
+			},
 		},
 		mounted() {
 			if (!this.manual && this.api) {
