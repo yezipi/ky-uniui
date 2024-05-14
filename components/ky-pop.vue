@@ -23,7 +23,7 @@
 				<view
 				:class="position"
 				:style="{width: position !== 'center' ? false : width + 'rpx' }"
-				class="lmy-pop white-bg radius">
+				class="lmy-pop gray-bg radius">
 
 					<!--通用头部-->
 					<view v-if="title" :class="{ noClose, 'white-bg': type === 'pop', txtLeft: titleAlign === 'left' }" class="pop-top">
