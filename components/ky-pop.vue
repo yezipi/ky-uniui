@@ -452,6 +452,9 @@
 		&.top {
 			border-radius: 0!important;
 		}
+		&.dialog .pop-content {
+			background: var(--bg-white);
+		}
 		.pop-top {
 			padding: 24rpx 36rpx;
 			display: flex;
@@ -492,7 +495,6 @@
 		}
 		.pop-content {
 			padding: 36rpx;
-			background: var(--bg-white);
 			&.noPadding {
 				padding: 0;
 			}
