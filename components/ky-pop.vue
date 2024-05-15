@@ -48,7 +48,7 @@
 						<view v-if="$slots.header" class="pop-header">
 							<slot name="header"></slot>
 						</view>
-						<view :class="{ noPadding }" class="pop-scroll">
+						<view :class="{ noPadding, noScroll }" class="pop-scroll">
 							<slot></slot>
 						</view>
 						<view v-if="$slots.footer" :class="{'white-bg': !noFooterBg}" class="pop-footer">
@@ -239,7 +239,11 @@
       titleAlign: {
         type: String,
         default: 'center'
-      }
+      },
+			noScroll: {
+				type: Boolean,
+				default: true
+			}
 		},
 		data() {
 			return {
@@ -544,12 +548,17 @@
 			}
 		}
 		.pop-scroll {
-			max-height: 70vh;
+			max-height: 80vh;
 			overflow-y: auto;
 			padding: 24rpx;
 			position: relative;
 			&.noPadding {
 				padding: 0;
+			}
+			&.noScroll {
+				overflow: hidden;
+				display: flex;
+				flex-direction: column;
 			}
 		}
 		.pop-footer {
