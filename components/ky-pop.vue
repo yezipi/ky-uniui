@@ -27,7 +27,7 @@
 
 					<!--通用头部-->
 					<view v-if="title" :class="{ noClose, 'white-bg': type === 'pop', txtLeft: titleAlign === 'left' }" class="pop-top">
-						<text v-if="showTopBtn" class="pop-close" @click="close">取消</text>
+						<text v-if="showTopBtn" class="pop-close" @click="close">{{ $t('cancel') }}</text>
 						<text class="pop-title">{{ title }}</text>
 						<text v-if="!noClose && !showTopBtn && position !== 'top'" class="pop-close iconfont" @click="close">&#xe634;</text>
 						<button v-if="!noClose && showTopBtn" :disabled="disabled" :class="{ disabled }" class="pop-top-btn" @click="confirm">{{ confirmText }}</button>
@@ -130,6 +130,8 @@
 </template>
 
 <script>
+	import i18n from '@/utils/i18n.js'
+	
 	export default {
 		emits: ['change', 'update:value', 'confirm', 'cancel', 'input'],
 		props: {
@@ -161,11 +163,11 @@
 			},
 			cancelText: {
 				type: String,
-				default: '取消',
+				default: i18n.global.t('cancel'),
 			},
 			confirmText: {
 				type: String,
-				default: '确定',
+				default: i18n.global.t('confirm'),
 			},
 			// 输入框类型
 			inputType: {
@@ -178,7 +180,7 @@
 			},
 			placeholder: {
 				type: String,
-				default: '请输入'
+				default: i18n.global.t('inputTips'),
 			},
 			width: {
 				type: String,
@@ -362,7 +364,7 @@
 			},
 			confirm() {
 				if (this.type === 'input' && this.inputVal === '') {
-					this.$toast('内容不能为空')
+					this.$toast(this.$t('noContentTips'))
 					return
 				}
 				this.$emit('confirm', this.type === 'input' ? this.inputVal : true)

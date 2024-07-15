@@ -1,0 +1,17 @@
+{
+	"inputTips": "Please enter",
+	"selectTips": "Please select",
+	"noData": "No data",
+	"noMore": "No more",
+	"loading": "Loading...",
+	"loadFaild": "Loading failed, please click to try again",
+	"cancel": "Cancel",
+	"confirm": "Confirm",
+	"noContentTips": "Content cannot be empty",
+	"searchHistory": "Search history",
+	"search": "Search",
+	"confirmClearHistory": "Are you sure you want to clear all history?",
+	"getVerifyCode": "Get code",
+	"phoneTips": "Please enter the correct phone number",
+	"codeSendSuccess": "Code has been sent"
+}

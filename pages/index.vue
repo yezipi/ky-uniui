@@ -63,6 +63,14 @@
 			<ky-loading :type="1" isRelative></ky-loading>
 		</view>
 		
+		<view>
+			<ky-cell is-input label="姓名"></ky-cell>
+		</view>
+		
+		<view>
+			<ky-empty />
+		</view>
+		
 		
 	</view>
 </template>

@@ -23,7 +23,7 @@
 					<image v-else-if="loadState === -2" class="ky-fetch-err-img" src="@/static/img/request_error.png"></image>
 					<image v-else class="ky-fetch-err-img" src="@/static/img/network_error.png"></image>
 				</template>
-				<text class="ky-fetch-err-txt">{{ msg || noDataMsg || (loadState === -1 ? '暂无相关内容' : '加载失败，请点击重试') }}</text>
+				<text class="ky-fetch-err-txt">{{ msg || noDataMsg || (loadState === -1 ? $t('noData') : $t('loadFaild')) }}</text>
 			</view>
 			
 			<view v-if="$slots.nodata && loadState === -1" class="ky-fetch-error-tip">
@@ -115,7 +115,7 @@
 				},
 				data: {},
 				list: [],
-				tips: '没有更多了',
+				tips: this.$t('noMore'),
 				loadError: false,
 				loading: false,
 				isChangeCondition: false,
@@ -234,7 +234,7 @@
             this.noMore = this.list.length >= count
           }
 
-					this.tips = this.noMore ? '没有更多了' : '加载中...'
+					this.tips = this.noMore ? this.$t('noMore') : this.$t('loading')
 					
 					if (this.autoHideLoading) {
 						this.loadState = isNoData ? -1 : 1
@@ -256,7 +256,7 @@
 					if (e.code === 504) {
 						this.loadState = -3
 					}
-					this.tips = e.msg || '加载失败，请点击重试'
+					this.tips = e.msg || this.$t('loadFaild')
           this.msg = this.tips
 					this.loadError = true
           this.$emit('error', e)

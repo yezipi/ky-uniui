@@ -2,7 +2,7 @@
   <view class="ky-empty-wrap">
     <view class="ky-empty-box">
       <image v-if="icon" class="ky-empty-icon" src="/static/img/nodata.png"></image>
-      <text v-if="msg" class="ky-empty-msg">{{ msg }}</text>
+      <text v-if="errMsg" class="ky-empty-msg">{{ errMsg }}</text>
       <slot></slot>
     </view>
   </view>
@@ -17,14 +17,26 @@
       },
       msg: {
         type: String,
-        default: '暂无数据'
+        default: ''
       },
     },
+		watch: {
+			msg(v) {
+				if (v) {
+					this.errMsg = this.msg
+				}
+			},
+		},
     data() {
       return {
-
+				errMsg: this.$t('noData')
       }
-    }
+    },
+		mounted() {
+			if (this.msg) {
+				this.errMsg = this.msg
+			}
+		},
   }
 </script>
 

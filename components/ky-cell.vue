@@ -35,7 +35,7 @@
 					<view v-if="!right && isInput" class="opt-val opt-input">
 						<input
 							v-if="type === 'text'"
-							:placeholder="placeholder || `请输入${label}`"
+							:placeholder="placeholder || $t('inputTips') + label"
 							:disabled="disabled"
 						  :maxlength="maxlength"
 							type="text"
@@ -48,7 +48,7 @@
 						/>
 						<input
 							v-if="type === 'number'"
-							:placeholder="placeholder || `请输入${label}`"
+							:placeholder="placeholder || $t('inputTips') + label"
 							:disabled="disabled"
 						  :maxlength="maxlength"
 							type="number"
@@ -61,7 +61,7 @@
 						/>
 						<input
 							v-if="type === 'digit'"
-							:placeholder="placeholder || `请输入${label}`"
+							:placeholder="placeholder || $t('inputTips') + label"
 							:disabled="disabled"
 						  :maxlength="maxlength"
 							type="digit"
@@ -74,7 +74,7 @@
 						/>
 						<view v-if="type === 'textarea'" class="opt-textarea">
 							<textarea
-							  :placeholder="placeholder || `请输入${label}`"
+							  :placeholder="placeholder || $t('inputTips') + label"
 							  :disabled="disabled"
 							  :maxlength="maxlength"
 							  placeholder-class="input-placeholder"
@@ -97,7 +97,7 @@
 						style="width: 100%;"
 						@change="onDateChange"
 					>
-						<text class="opt-val">{{ content || placeholder || `请选择${label}` }}</text>
+						<text class="opt-val">{{ content || placeholder || $t('selectTips') + label }}</text>
 					</picker>
 					
 				</template>

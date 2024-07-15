@@ -17,7 +17,7 @@
 				  />
 				  <text v-if="str" class="iconfont gray-color ky-search-clear" @click.stop="handleClear">&#xe634;</text>
 				</view>
-				<ky-btn width="150rpx" height="75rpx" radius="0" size="small" @click="handleSearch">搜索</ky-btn>
+				<ky-btn width="150rpx" height="75rpx" radius="0" size="small" @click="handleSearch">{{ $t('search') }}</ky-btn>
 			</view>
 		</view>
 		<!-- #endif -->
@@ -26,7 +26,7 @@
 		<view v-if="historyList.length && state" class="ky-search-history-wrap white-bg">
 		  <view class="ky-search-history-main">
 		    <view class="ky-search-history-head">
-		      <text class="ky-search-history-title">搜索历史</text>
+		      <text class="ky-search-history-title">{{ $t('searchHistory') }}</text>
 		      <text class="iconfont" @click="clearHistory">&#xe614;</text>
 		    </view>
 		    <view class="ky-search-history-list">
@@ -42,6 +42,8 @@
 </template>
 
 <script>
+	import i18n from '@/utils/i18n.js'
+	
 	export default {
 		emits: ['select', 'search', 'update:keyword', 'update:visible'],
 		props: {
@@ -64,7 +66,7 @@
 			},
 			placeholder: {
 				type: String,
-				default: '请输入关键词'
+				default: i18n.global.t('inputTips')
 			},
 		},
 		data() {
@@ -138,7 +140,7 @@
 				}
 			},
 			clearHistory() {
-			  this.$confirm({ content: '确定清除全部历史吗？' }, (res) => {
+			  this.$confirm({ content: i18n.global.t('confirmClearHistory') }, (res) => {
 			    if (res.confirm) {
 			      this.historyList = []
 			      this.$db.set(this.keyStr, [])
