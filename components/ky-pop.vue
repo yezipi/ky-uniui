@@ -130,7 +130,7 @@
 </template>
 
 <script>
-	import i18n from '@/utils/i18n.js'
+	import i18n from '../utils/i18n.js'
 	
 	export default {
 		emits: ['change', 'update:value', 'confirm', 'cancel', 'input'],
