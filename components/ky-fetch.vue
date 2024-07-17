@@ -256,7 +256,7 @@
 					if (e.code === 504) {
 						this.loadState = -3
 					}
-					this.tips = e.msg || this.$t('loadFaild')
+					this.tips = e.msg || e.errMsg || this.$t('loadFaild')
           this.msg = this.tips
 					this.loadError = true
           this.$emit('error', e)
