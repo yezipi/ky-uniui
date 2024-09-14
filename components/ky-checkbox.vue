@@ -54,14 +54,14 @@
 .pop-check {
 		display: flex;
 		align-items: center;
-		height: 40rpx;
+		min-height: 40rpx;
     &.disabled {
       text {
         color: var(--color-gray);
       }
     }
 		&.small {
-			height: 34rpx;
+			min-height: 34rpx;
 			.iconfont {
 				font-size: 34rpx;
 			}
@@ -70,7 +70,7 @@
 			}
 		}
 		&.large {
-			height: 60rpx;
+			min-height: 60rpx;
 			.iconfont {
 				font-size: 60rpx;
 			}
