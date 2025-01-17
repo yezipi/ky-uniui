@@ -255,6 +255,7 @@
 					}
 					
 				} catch(e) {
+					this.loadState = -3
 					if (page === 1) {
 						this.loadState = -2
 					}

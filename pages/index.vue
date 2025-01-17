@@ -37,6 +37,8 @@
 			<ky-btn class="btn-item" plain round type="default">按钮</ky-btn>
 		</view>
 		
+		<ky-btn class="btn-item" plain round type="primary" @click="$refs.input.open()">弹出输入框</ky-btn>
+		
 		<ky-pop ref="pop" :disabled="test" position="bottom" noPadding showTopBtn title="选择产品">
 		  <view class="koa-skus">
 		    <view
@@ -71,7 +73,16 @@
 			<ky-empty />
 		</view>
 		
-		
+		<ky-pop
+		  v-model:value="inputVal"
+		  title="请输入"
+		  type="input"
+		  inputType="number"
+		  placeholder="请输入"
+		  ref="input"
+		  @confirm="confirmSetRecommend"
+		>
+		</ky-pop>
 	</view>
 </template>
 
@@ -86,7 +97,8 @@
 				  { id: 3, name: 'ddd', checked: false },
 				  { id: 4, name: 'eee', checked: false }
 				],
-				test: true
+				test: true,
+				inputVal: ''
 			}
 		},
 		computed: {
@@ -97,7 +109,10 @@
 		methods: {
 		  selectSku(item) {
 		    item.checked = !item.checked
-		  }
+		  },
+			confirmSetRecommend(v) {
+				console.log(v)
+			}
 		}
 	}
 </script>

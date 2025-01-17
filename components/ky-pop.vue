@@ -62,7 +62,7 @@
 
 
 					<!--############## 输入框提示框 ##############-->
-					<view v-if="type === 'input'" class="pop-content">
+					<view v-if="type === 'input'" class="pop-content white-bg">
 						<view class="pop-input">
 							<!--由于不支持动态设置type，只能这样了-->
 							<input
@@ -363,6 +363,7 @@
 				this.close()
 			},
 			confirm() {
+				console.log(this.inputVal)
 				if (this.type === 'input' && this.inputVal === '') {
 					this.$toast(this.$t('noContentTips'))
 					return
@@ -374,6 +375,7 @@
 			},
 			getInputVal({ detail }) {
 				this.$emit('input', detail.value)
+				this.inputVal = detail.value
 			},
 			onPopChange(e) {
 				if (this.type !== 'input') {
