@@ -197,10 +197,10 @@
 					delete params.size
 				}
 				
-				if (this.noLoadmore) {
-					delete params.page
-					delete params.size
-				}
+				// if (this.noLoadmore) {
+				// 	delete params.page
+				// 	delete params.size
+				// }
 				
 				try {
 					const apiUrl = this.api.split('.')
