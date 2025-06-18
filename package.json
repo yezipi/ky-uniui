@@ -9,7 +9,7 @@
 		"locale"
   ],
   "description": "an uniapp ui",
-  "version": "1.1.8",
+  "version": "1.1.9",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/yezipi/ky-uniui.git"

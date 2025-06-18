@@ -27,12 +27,12 @@
           <text class="ky-tab-text">{{ tab[label] }}</text>
         </view>
       </view>
-      <!-- <view
+      <view
       	v-if="tabItemWidth > 0 && !hasIcon"
       	:style="{ left: tabItemOffsetLeft + 'px', width:  tabItemWidth + 'px', 'background-color': activeColor }"
-      	class="tab-slider"
+      	class="ky-tab-slider"
       >
-      </view> -->
+      </view>
     </view>
 	</scroll-view>
 </template>
@@ -133,12 +133,10 @@
           return
         }
 				const query = uni.createSelectorQuery().in(this)
-				const parent = query.select('#ky-tab-parent')
-				// vue3版本在真机上不能同时获取两个元素
+				const parent = query.select(`#ky_tab_${index}`)
 				parent.boundingClientRect(data => {
-					// console.log(data)
-					this.tabItemWidth = data.width / (this.menu.length * 2)
-					this.tabItemOffsetLeft = index * this.tabItemWidth * 2 + (data.left || (this.tabItemWidth/2.75))
+					this.tabItemWidth = data.width
+					this.tabItemOffsetLeft = data.left
 					if (this.tabIndex === index) {
 						return
 					}
@@ -223,15 +221,12 @@
 				justify-content: space-around;
 				.ky-tab-item {
 					margin: 0 12rpx;
-					padding: 12rpx 0;
+					padding: 15rpx 0;
 					transition: all 0.3s;
 					color: var(--color-gray);
-					border-bottom: 2px solid rgba(255,255,255,0);
-					box-sizing: border-box;
 					&.active {
 						font-weight: bold;
 						color: var(--color-primary);
-						border-color: var(--color-primary);
 					}
 		      &.icon {
 		        font-weight: normal;
@@ -255,9 +250,8 @@
 				height: 6rpx;
 				border-radius: 12rpx;
 				width: 50rpx;
-				left: 15%;
 				bottom: 0;
-		    transition: all 0.5s;
+		    transition: all 0.3s;
 			}
 		}
   }
