@@ -248,10 +248,8 @@
 					this.loadError = false
 					this.$emit('load', this.list)
 					
-					if (page === 1 && data) {
-						const obj = { ...data }
-						delete obj.lists
-						this.$emit('all', obj)
+					if (page === 1) {
+						this.$emit('all', res)
 					}
 					
 				} catch(e) {
