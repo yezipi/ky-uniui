@@ -36,7 +36,8 @@
 </template>
 
 <script>
-	const isDark = uni.getSystemInfoSync().theme === 'dark'
+	const isDark = uni.getAppBaseInfo().theme
+	const windowInfo = uni.getWindowInfo()
 
   export default {
 		emits: ['rightClick', 'scrollTo'],
@@ -124,7 +125,7 @@
         sLoad: false,
         isLogin: false,
         messageNum: 0,
-        barTop: 0,
+        barTop: windowInfo.statusBarHeight,
         opacity: 0,
         isScrollTo: false,
         menuButtonTop: 0, // 小程序胶囊按钮高度
@@ -142,11 +143,10 @@
 				return this.isDark ? 'rgba(55,55,55, 0.9)' : 'rgba(255,255,255, 0.9)'
 			}
     },
-    created() {
-      this.barTop = uni.getSystemInfoSync().safeArea.top + 50
+    mounted() {
       // #ifdef MP-WEIXIN
       const button = uni.getMenuButtonBoundingClientRect()
-      this.menuButtonTop = button.top + 5
+      this.menuButtonTop = button.top - 5
       // #endif
       this.opacity = this.transparent ? 0 : 1
 			uni.onThemeChange(res => {
