@@ -29,7 +29,12 @@
       </view>
       <view
       	v-if="tabItemWidth > 0 && !hasIcon"
-      	:style="{ left: tabItemOffsetLeft + 'px', width:  tabItemWidth + 'px', 'background-color': activeColor }"
+      	:style="{
+					left: tabItemOffsetLeft + 'px',
+					width: tabItemWidth + 'px',
+					height: tabItemHeight + 'px',
+					'background-color': activeColor 
+				}"
       	class="ky-tab-slider"
       >
       </view>
@@ -98,6 +103,7 @@
 			return {
 				tabItemOffsetLeft: 0,
 				tabItemWidth: 0,
+				tabItemHeight: 2,
 				tabIndex: 0,
 			}
 		},
@@ -137,6 +143,9 @@
 				parent.boundingClientRect(data => {
 					this.tabItemWidth = data.width
 					this.tabItemOffsetLeft = data.left
+					if (this.type === 'card') {
+						this.tabItemHeight = data.height
+					}
 					if (this.tabIndex === index) {
 						return
 					}
@@ -184,12 +193,11 @@
 						justify-content: center;
 						border-right: 1px solid var(--color-primary);
 						box-sizing: border-box;
+						&.active {
+							color: #ffffff;
+						}
 						&:last-child {
 							border-right: 0;
-						}
-						&.active {
-							background: var(--color-primary);
-							color: #ffffff;
 						}
 					}
 				}
@@ -223,6 +231,8 @@
 					margin: 0 12rpx;
 					padding: 15rpx 0;
 					transition: all 0.3s;
+					position: relative;
+					z-index: 1;
 					color: var(--color-gray);
 					&.active {
 						font-weight: bold;
@@ -247,11 +257,11 @@
 			.ky-tab-slider {
 				position: absolute;
 				background-color: var(--color-primary);
-				height: 6rpx;
-				border-radius: 12rpx;
-				width: 50rpx;
-				bottom: 0;
+				height: 0;
+				width: 0;
+				bottom: 1px;
 		    transition: all 0.3s;
+				z-index: -1;
 			}
 		}
   }
