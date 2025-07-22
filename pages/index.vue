@@ -1,9 +1,13 @@
 <template>
 	<view class="index-demo">
-		<ky-tab :menu="[
-			{ name: '进行中', id: 1, },
-			{ name: '已完成', id: 2 }
-		]" type="line"></ky-tab>
+		<view >
+			<view style="padding: 24rpx;">
+				<ky-tab :menu="[
+					{ name: '进行中', id: 1, },
+					{ name: '已完成', id: 2 }
+				]" type="card"></ky-tab>
+			</view>
+		</view>
 		<view class="demo-btns">
 			<ky-btn class="btn-item" @click="$refs.pop.open()">按钮</ky-btn>
 			<ky-btn class="btn-item" round>按钮</ky-btn>

@@ -10,9 +10,10 @@
 			card: type === 'card',
 			'white-bg': !noBg
     }"
+		:id="`ky-tab-wrap-${id}`"
     class="ky-tab-wrap"
   >
-		<view id="ky-tab-parent" class="ky-tab-components">
+		<view class="ky-tab-components">
       <view class="ky-tab-box">
       	<view
       		v-for="(tab, i) in menu"
@@ -47,6 +48,10 @@
 		emits: ['update:value', 'change'],
 		props: {
       // 显示字体图标传入icon: '\'
+			id: {
+				type: [String, Number],
+				default: 1
+			},
 			menu: {
 				type: Array,
 				default: () => [],
@@ -129,30 +134,43 @@
 		},
 		methods: {
 			onTabClick(item, index) {
+				this.$nextTick(() => {
+					const query = uni.createSelectorQuery().in(this)
+					query.select(`#ky-tab-wrap-${this.id}`).boundingClientRect()
+					query.select(`#ky_tab_${index}`).boundingClientRect()
+					query.exec(data => {
+						const parent = data[0]
+						const tab = data[1]
+						this.tabItemWidth = tab.width
+						this.tabItemOffsetLeft = tab.left - parent.left
+						if (this.type === 'card') {
+							this.tabItemHeight = tab.height
+						}
+					})
+				})
 				if (this.disabled) {
 					return
 				}
-        if (this.hasIcon) {
-          this.tabIndex = index
-          this.$emit('change', index)
-          this.$emit('update:value', index)
-          return
-        }
-				const query = uni.createSelectorQuery().in(this)
-				const parent = query.select(`#ky_tab_${index}`)
-				parent.boundingClientRect(data => {
-					this.tabItemWidth = data.width
-					this.tabItemOffsetLeft = data.left
-					if (this.type === 'card') {
-						this.tabItemHeight = data.height
-					}
-					if (this.tabIndex === index) {
-						return
-					}
-					this.tabIndex = index
-					this.$emit('change', index)
-				  this.$emit('update:value', index)
-				}).exec()
+				if (this.tabIndex === index) {
+					return
+				}
+				this.tabIndex = index
+				this.$emit('change', index)
+				this.$emit('update:value', index)
+				// tabEl.boundingClientRect(data => {
+				// 	console.log(data)
+				// 	this.tabItemWidth = data.width
+				// 	this.tabItemOffsetLeft = data.left
+				// 	if (this.type === 'card') {
+				// 		this.tabItemHeight = data.height
+				// 	}
+				// 	if (this.tabIndex === index) {
+				// 		return
+				// 	}
+				// 	this.tabIndex = index
+				// 	this.$emit('change', index)
+				//   this.$emit('update:value', index)
+				// }).exec()
 			}
 		}
 	}
