@@ -22,14 +22,14 @@
       		:class="{ active: i === tabIndex, icon: tab.icon }"
       		:id="'ky_tab_'+i"
       		class="ky-tab-item"
-      		@click="onTabClick(tab, i)"
+      		@click="onTabClick(i)"
         >
           <text v-if="tab.icon" class="ky-tab-icon iconfont">{{ tab.icon }}</text>
           <text class="ky-tab-text">{{ tab[label] }}</text>
         </view>
       </view>
       <view
-      	v-if="tabItemWidth > 0 && !hasIcon"
+      	v-if="tabItemWidth > 0"
       	:style="{
 					left: tabItemOffsetLeft + 'px',
 					width: tabItemWidth + 'px',
@@ -109,31 +109,31 @@
 				tabItemOffsetLeft: 0,
 				tabItemWidth: 0,
 				tabItemHeight: 2,
-				tabIndex: 0,
+				tabIndex: -1,
 			}
 		},
     watch: {
       value(v) {
-        this.tabIndex = v
+				this.onTabClick(v)
       }
     },
     computed: {
-      hasIcon() {
-        return this.menu.find(e => e.icon)
-      },
       $safeBottom() {
       	return uni.getSystemInfoSync().safeAreaInsets.bottom
       }
     },
 		mounted() {
-      if (!this.hasIcon) {
-        this.onTabClick(this.menu[this.index], this.index)
-      } else {
-        this.tabIndex = typeof this.value !== 'undefined' ? this.value : this.index
-      }
+			this.onTabClick(typeof this.value !== 'undefined' ? this.value : this.index)
 		},
 		methods: {
-			onTabClick(item, index) {
+			onTabClick(index) {
+				console.log('当前索引:', index)
+				if (this.disabled) {
+					return
+				}
+				if (this.tabIndex === index) {
+					return
+				}
 				this.$nextTick(() => {
 					const query = uni.createSelectorQuery().in(this)
 					query.select(`#ky-tab-wrap-${this.id}`).boundingClientRect()
@@ -148,29 +148,9 @@
 						}
 					})
 				})
-				if (this.disabled) {
-					return
-				}
-				if (this.tabIndex === index) {
-					return
-				}
 				this.tabIndex = index
 				this.$emit('change', index)
 				this.$emit('update:value', index)
-				// tabEl.boundingClientRect(data => {
-				// 	console.log(data)
-				// 	this.tabItemWidth = data.width
-				// 	this.tabItemOffsetLeft = data.left
-				// 	if (this.type === 'card') {
-				// 		this.tabItemHeight = data.height
-				// 	}
-				// 	if (this.tabIndex === index) {
-				// 		return
-				// 	}
-				// 	this.tabIndex = index
-				// 	this.$emit('change', index)
-				//   this.$emit('update:value', index)
-				// }).exec()
 			}
 		}
 	}
