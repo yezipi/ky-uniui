@@ -36,7 +36,7 @@
 </template>
 
 <script>
-	const isDark = uni.getAppBaseInfo().theme
+	const isDark = uni.getAppBaseInfo().theme !== 'light'
 	const windowInfo = uni.getWindowInfo()
 
   export default {

@@ -118,6 +118,9 @@
       }
     },
     computed: {
+      hasIcon() {
+        return this.menu.find(e => e.icon)
+      },
       $safeBottom() {
       	return uni.getSystemInfoSync().safeAreaInsets.bottom
       }
@@ -127,7 +130,6 @@
 		},
 		methods: {
 			onTabClick(index) {
-				console.log('当前索引:', index)
 				if (this.disabled) {
 					return
 				}

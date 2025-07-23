@@ -96,9 +96,9 @@
 				const currVal = this.list[index]
 				this.checked = this.ids[index]
         const valProps = this.setVal(this.value)
-				if (valProps === this.checked) {
-					return
-				}
+				// if (valProps === this.checked) {
+				// 	return
+				// }
 				this.index = index
 				currVal.index = index
 				this.$emit('update:value', this.checked)
