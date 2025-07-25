@@ -365,9 +365,10 @@
 			right: 0;
 			display: flex;
 			align-items: center;
-			justify-content: space-between;
+			justify-content: center;
 			&.hasLeft {
 				height: 90rpx;
+				justify-content: space-between;
 				.btn-main {
 					width: 200rpx;
 					margin: 0;
